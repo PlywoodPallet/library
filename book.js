@@ -13,6 +13,14 @@ function Book(title, author, numPages, hasBeenRead) {
   };
 }
 
+function createRemoveButton(index) {
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'X';
+  removeButton.classList.add(index);
+
+  return removeButton;
+}
+
 function displayLibrary() {
   const libraryDisplay = document.querySelector('.output');
 
@@ -23,6 +31,7 @@ function displayLibrary() {
     const bookElement = document.createElement('div');
     bookElement.classList.add(i); // add index number
     bookElement.textContent = myLibrary[i].info();
+    bookElement.appendChild(createRemoveButton(i));
     libraryDisplay.appendChild(bookElement);
   }
 }
