@@ -1,0 +1,13 @@
+{
+    // automatically fix syntax and formatting issues every time you save
+    // https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["javascript"],
+
+    "editor.defaultFormatter": "esbenp.prettier-vscode", 
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

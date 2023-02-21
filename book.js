@@ -1,0 +1,55 @@
+const myLibrary = [];
+
+function Book(title, author, numPages, hasBeenRead) {
+  this.title = title;
+  this.author = author;
+  this.numPages = numPages;
+  this.hasBeenRead = hasBeenRead;
+
+  // TODO: change hasBeenRead to a boolean, then change the output to print two different strings
+  // based on true or false
+  this.info = function() {
+    return `${this.title} by ${this.author}, ${this.numPages}, ${this.hasBeenRead}`;
+  };
+}
+
+function displayLibrary() {
+  const libraryDisplay = document.querySelector('.output');
+
+  // clear display
+  libraryDisplay.textContent = '';
+
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    const bookElement = document.createElement('div');
+    bookElement.textContent = myLibrary[i].info();
+    libraryDisplay.appendChild(bookElement);
+  }
+}
+
+function addBookToLibrary(e) {
+  e.preventDefault();
+
+  const title = document.querySelector('#title');
+  const author = document.querySelector('#author');
+  const number = document.querySelector('#pages');
+  const hasBeenRead = document.querySelector('#hasBeenRead');
+
+  const newBook = new Book(title.value, author.value, number.value, hasBeenRead.checked);
+  myLibrary.push(newBook);
+
+  // reprint the new library
+  displayLibrary();
+}
+
+const addBookForm = document.querySelector('#addBookForm');
+addBookForm.addEventListener('submit', addBookToLibrary);
+
+const theHobbit = new Book('The Hobbit', 'JRR Tolkien', 295, false);
+const harryPotter = new Book('Harry Potter', 'JK Rowling', 223, false);
+const gameOfThrones = new Book('Game of Thrones', 'George RR Martin', 694, false);
+
+myLibrary.push(theHobbit);
+myLibrary.push(harryPotter);
+myLibrary.push(gameOfThrones);
+
+displayLibrary();
