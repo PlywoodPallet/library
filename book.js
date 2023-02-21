@@ -21,6 +21,7 @@ function displayLibrary() {
 
   for (let i = 0; i < myLibrary.length; i += 1) {
     const bookElement = document.createElement('div');
+    bookElement.classList.add(i); // add index number
     bookElement.textContent = myLibrary[i].info();
     libraryDisplay.appendChild(bookElement);
   }
