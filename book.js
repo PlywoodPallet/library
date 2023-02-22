@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, numPages, hasBeenRead) {
   this.title = title;
@@ -16,7 +16,16 @@ function Book(title, author, numPages, hasBeenRead) {
 function createRemoveButton(index) {
   const removeButton = document.createElement('button');
   removeButton.textContent = 'X';
+  // add array index to div class
   removeButton.classList.add(index);
+
+  // add remove button behavior
+  removeButton.addEventListener('click', () => {
+    myLibrary.splice(index, 1);
+
+    // reprint the new library
+    displayLibrary();
+  });
 
   return removeButton;
 }
