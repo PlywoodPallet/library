@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, numPages, hasBeenRead) {
   this.title = title;
