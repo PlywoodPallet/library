@@ -13,6 +13,10 @@ function Book(title, author, numPages, hasBeenRead) {
   };
 }
 
+Book.prototype.toggleHasBeenRead = function() {
+  this.hasBeenRead = this.hasBeenRead ? false : true;
+};
+
 function createRemoveButton(index) {
   const removeButton = document.createElement('button');
   removeButton.textContent = 'X';
