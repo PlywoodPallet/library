@@ -34,6 +34,21 @@ function createRemoveButton(index) {
   return removeButton;
 }
 
+function createHasBeenReadToggleButton(index) {
+  const readToggleButton = document.createElement('button');
+  const book = myLibrary[index];
+  readToggleButton.textContent = book.hasBeenRead;
+
+  readToggleButton.addEventListener('click', () => {
+    book.toggleHasBeenRead();
+
+    // reprint the new library
+    displayLibrary();
+  });
+
+  return readToggleButton;
+}
+
 function displayLibrary() {
   const libraryDisplay = document.querySelector('.output');
 
@@ -44,6 +59,7 @@ function displayLibrary() {
     const bookElement = document.createElement('div');
     bookElement.classList.add(i); // add index number
     bookElement.textContent = myLibrary[i].info();
+    bookElement.appendChild(createHasBeenReadToggleButton(i));
     bookElement.appendChild(createRemoveButton(i));
     libraryDisplay.appendChild(bookElement);
   }
